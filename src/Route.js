@@ -8,6 +8,7 @@ import AddGroup from "./components/AddGroup";
 import EditGroup from "./components/EditGroup";
 import ShowProduct from "./components/ShowProduct";
 import AddProduct from "./components/AddProduct";
+import DetailProduct from "./components/DetailProduct";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
       {
         path: "add-product",
         element: <AddProduct />,
+      },
+      {
+        path: "detail-product/:id",
+        element: <DetailProduct />,
       },
     ],
   },

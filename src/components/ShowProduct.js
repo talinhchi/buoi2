@@ -39,12 +39,17 @@ const ShowProduct = () => {
               <td>
                 <Link
                   className="btn btn-warning"
-                  to={`edit-product/${product.id}`}
+                  to={`/edit-product/${product.masp}`}
                 >
                   Edit
                 </Link>
-                <button className="btn btn-danger ms-2">Delete</button>
-                <button className="btn btn-primary ms-2">View</button>
+                <button className="btn btn-danger m-2">Delete</button>
+                <Link
+                  className="btn btn-primary"
+                  to={`/detail-product/${product.masp}`}
+                >
+                  Xem
+                </Link>
               </td>
             </tr>
           ))}
