@@ -1,13 +1,29 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { AppContext } from "../contexts/AppContext";
+import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
+
+import axios from "axios";
 function Login() {
   const [inpUsername, setInpUsername] = useState("");
   const [inpPassword, setInpPassword] = useState("");
   const [inpIsadmin, setInpIsadmin] = useState(false);
+  const { dataUser, setDataUser } = useContext(AppContext);
+  const navigate = useNavigate();
+  if (dataUser.username) {
+    return navigate("/");
+  }
   const handleLogin = (event) => {
     event.preventDefault();
-    console.log("Username:", inpUsername);
-    console.log("Password:", inpPassword);
-    console.log("IsAdmin:", inpIsadmin);
+    axios
+      .post(`${process.env.REACT_APP_API_URL}/api/v1/login`, {
+        username: inpUsername,
+        password: inpPassword,
+      })
+      .then((res) => {
+        setDataUser(res.data.user);
+        Cookies.set("accessToken", res.data.accessToken, { expires: 1 });
+      });
   };
   return (
     <form action="" className="p-4 border rounded">

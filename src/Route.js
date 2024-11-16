@@ -9,6 +9,7 @@ import EditGroup from "./components/EditGroup";
 import ShowProduct from "./components/ShowProduct";
 import AddProduct from "./components/AddProduct";
 import DetailProduct from "./components/DetailProduct";
+import Profile from "./components/Profile";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
       {
         path: "detail-product/:id",
         element: <DetailProduct />,
+      },
+      {
+        path: "profile",
+        element: <Profile />,
       },
     ],
   },

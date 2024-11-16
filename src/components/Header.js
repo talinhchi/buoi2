@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AppContext } from "../contexts/AppContext";
 
 function Item({ props }) {
   return (
@@ -39,6 +41,7 @@ function Menu({ list }) {
   );
 }
 function Header() {
+  const { dataUser } = useContext(AppContext);
   const listHeader = [
     {
       link: "/login",
@@ -59,6 +62,10 @@ function Header() {
     {
       link: "/show-product",
       content: "Sản phẩm",
+    },
+    {
+      link: `/profile`,
+      content: `Xin chao ${dataUser.username ?? "Khách"}`,
     },
   ];
   return <Menu list={listHeader} />;
